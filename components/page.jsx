@@ -29,22 +29,23 @@ function Students () {
 
     async function getData() {
 
-        const url = "http://offlix.atwebpages.com/src/b/sh_st.php";
-        const reData = new URLSearchParams();
-        reData.append("sh_st","all");
-        reData.append("grade", 10);
-        reData.append("section", "E");
-        reData.append("sex", "M");
-        reData.append("limit", 5);
-
-        const fullURL = `${url}?${reData}`;
-
-        const response = await fetch(fullURL,{
-            method:"GET"
+        const response = await fetch("/api/students",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                sh_st : "all",
+                grade:10,
+                section:"E",
+                sex:"M",
+                limit:5
+            })
         });
         if (response.ok) {
             const data = await response.json();
             console.log(data);
+            
             setStuds(data);
         }
     }
@@ -60,9 +61,11 @@ function Students () {
     return(
         <div>
             { 
-            studs.data ? studs.data.map((stud, index) =>(
-                    <Student key={index} sex={stud.sex} name={stud.name} grade={stud.grade} section={stud.section} total={stud.total_1} average={stud.average_1} />
-                )) : "loading"
+                
+            studs.data.data ? studs.data.data.map((stud, index) =>(
+                <Student key={index} sex={stud.sex} name={stud.name} grade={stud.grade} section={stud.section} total={stud.total_1} average={stud.average_1} />
+            )) : "loading"
+
             }
         </div>
     )
