@@ -78,7 +78,7 @@ function Student({name,grade,section,total,average,sex,rank,profile,bgColor}){
     const divColor = {
         "gold" : "bg-yellow-400/80 text-white [&>div>img]:border-white",
         "silver" : "bg-gray-400 text-white [&>div>img]:border-white",
-        "bronze" : "bg-blue-500 text-white [&>div>img]:border-black",
+        "bronze" : "bg-blue-500 text-white [&>div>img]:border-white",
         "normal" : "bg-white text-black [&>div>img]:border-black"
     }
 
