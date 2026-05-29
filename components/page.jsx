@@ -36,14 +36,16 @@ function Students () {
             },
             body:JSON.stringify({
                 sh_st : "all",
-                grade:10,
-                section:"E",
-                sex:"M",
-                limit:5
+                grade:11,
+                section: "all",
+                sex: "all",
+                limit:10
             })
         });
         if (response.ok) {
             const data = await response.json();            
+            console.log(data);
+            
             setStuds(data);
         }
     }
