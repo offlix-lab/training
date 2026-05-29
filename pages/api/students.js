@@ -10,8 +10,8 @@ export default async function handler(req,res) {
         const reData = new URLSearchParams();
         
         reData.append("sh_st", sh_st  ? sh_st : "all");
-        reData.append("grade", grade ? grade : "10");
-        reData.append("section", section ? section : "all");
+        reData.append("grade", grade ? grade : "09");
+        reData.append("section", section ? section : "B");
         reData.append("sex", sex ? sex : "all");
         reData.append("limit", limit ? limit : 10);
 

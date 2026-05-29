@@ -36,10 +36,10 @@ function Students () {
             },
             body:JSON.stringify({
                 sh_st : "all",
-                grade:11,
-                section: "all",
+                grade: "09",
+                section: "b",
                 sex: "all",
-                limit:10
+                limit:30
             })
         });
         if (response.ok) {
@@ -63,7 +63,7 @@ function Students () {
             { 
                 
             studs.data.data ? studs.data.data.map((stud, index) =>(
-                <Student key={index} sex={stud.sex} name={stud.name} grade={stud.grade} section={stud.section} total={stud.total_1} average={stud.average_1} />
+                <Student key={index} bgColor={stud.meta["type"]} profile={stud.meta["profile"]} rank={stud.meta["rank"]} sex={stud.sex} name={stud.name} grade={stud.meta["grade"]} section={stud.section} total={stud.total} average={stud.average} />
             )) : "loading"
 
             }
@@ -73,18 +73,26 @@ function Students () {
 
 
 
-function Student({name,grade,section,total,average,sex}){
+function Student({name,grade,section,total,average,sex,rank,profile,bgColor}){
 
+    const divColor = {
+        "gold" : "bg-yellow-400/80",
+        "silver" : "bg-gray-400 text-black",
+        "bronze" : "bg-blue-500",
+        "normal" : "bg-white text-black"
+    }
 
 
     return(
-        <div className="border border-white w-80 rounded-[50px] mx-auto my-6 p-6 flex flex-col gap-y-4">
-            <div className="">
-                <img  className=" size-18 border border-white rounded-full" src={`https://offlix.great-site.net/src/photo/photo-bg-${sex}.png`} alt="Stud" loading="lazy" />
+        <div className={`border border-white w-80 rounded-[50px] mx-auto my-6 p-6 flex flex-col gap-y-4 ${divColor[bgColor]}`}>
+            <div className="flex justify-between">
+                <img  className=" size-18 border border-white rounded-full" src={profile} alt="Stud" loading="lazy" />
+                <p className="size-18 text-2xl text-center font-bold">{rank}</p>
             </div>
             <div className="bg-fuchsia-800/20 px-4 py-2 rounded-2xl">
                 <p>Name:  {name}</p>
-                <p>Grade: {grade}<sup>th</sup>{section}</p>
+                <p>Sex: {sex}</p>
+                <p>Grade: {grade} - {section}</p>
                 <p>Total: {total}</p>
                 <p>Average: {average}</p>
             </div>
