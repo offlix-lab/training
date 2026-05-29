@@ -78,7 +78,7 @@ function Student({name,grade,section,total,average,sex,rank,profile,bgColor}){
     const divColor = {
         "gold" : "bg-yellow-400/80",
         "silver" : "bg-gray-400 text-black",
-        "bronze" : "bg-blue-500",
+        "bronze" : "bg-blue-500 text-white [&>div>img]:border-black",
         "normal" : "bg-white text-black"
     }
 
@@ -86,7 +86,7 @@ function Student({name,grade,section,total,average,sex,rank,profile,bgColor}){
     return(
         <div className={`border border-white w-80 rounded-[50px] mx-auto my-6 p-6 flex flex-col gap-y-4 ${divColor[bgColor]}`}>
             <div className="flex justify-between">
-                <img  className=" size-18 border border-white rounded-full" src={profile} alt="Stud" loading="lazy" />
+                <img  className=" size-18 border rounded-full" src={profile} alt="Stud" loading="lazy" />
                 <p className="size-18 text-2xl text-center font-bold">{rank}</p>
             </div>
             <div className="bg-fuchsia-800/20 px-4 py-2 rounded-2xl">
